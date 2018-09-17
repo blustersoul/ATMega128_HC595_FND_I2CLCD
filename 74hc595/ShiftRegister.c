@@ -23,7 +23,7 @@ void ShiftRegisterDataWrite(uint8_t data)
 		else                                                        // data bit low
 			clearbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN);
 		
-		((data>>i) & 0x01) ? setbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN) : clearbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN);
+		//((data>>i) & 0x01) ? setbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN) : clearbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN);
 		ShiftRegisterClock();
 	}
 	ShiftRegisterLatch();  // latch shift data after shift 8times.
