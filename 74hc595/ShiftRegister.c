@@ -16,9 +16,9 @@ void ShiftRegisterInit(void)
 
 void ShiftRegisterDataWrite(uint8_t data)
 {
-	for (int i=7; i<=0; i--)      // ex) data = 0b11000011
-	{                             // ex) (0b11000011 >> 7) & 0x01 ===> 0b00000001 & 0b00000001  ====> 0b00000001 ==> 1 : true
-		if ( (data>>i) & 0x01 )   // ex) (0b11000011 >> 3) & 0x01 ===> 0b00011000 & 0b00000001  ====> 0b00000000 ==> 0 : false
+	for (int i=0; i<8; i++)      // ex) data = 0b11000011
+	{                             // ex) (0b11000011 << 0) & 0x01 ===> 0b11000011 & 0b10000000  ====> 0b10000000 ==> true
+		if ( (data<<i) & 0x80 )   // ex) (0b11000011 << 3) & 0x01 ===> 0b00011000 & 0b10000000  ====> 0b00000000 ==> false
 			setbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN);  // data bit high
 		else                                                        // data bit low
 			clearbit(SHIFT_REGISTER_PORT, SHIFT_REGISTER_DATA_PIN);
